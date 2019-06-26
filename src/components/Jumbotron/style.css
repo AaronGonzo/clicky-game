@@ -1,0 +1,18 @@
+.jumbotron {
+  background-image: url(https://i.ytimg.com/vi/6XXAG8_f9rM/maxresdefault.jpg);
+  opacity: 0.8;
+  color: white;
+  text-align: center;
+  margin-bottom: 20px;
+  height: 400px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.header h1 {
+  margin: 0;
+  margin-top: 40px;
+  margin-bottom: 30px;
+  font-size: 4rem;
+}

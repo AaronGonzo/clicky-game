@@ -1,0 +1,10 @@
+.footer {
+  border-top: 3px solid black;
+  opacity: 0.9;
+  margin-top: 20px;
+  text-align: center;
+  height: 120px;
+  color: white;
+  font-size: 30px;
+  background-image: url(https://i.ytimg.com/vi/6XXAG8_f9rM/maxresdefault.jpg);
+}
