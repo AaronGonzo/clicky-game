@@ -7,10 +7,8 @@ function Header(props) {
     <div>
       <ul className="list">
         <li className="header-link">Clicky Game</li>
-        <li className="header-link">You WIN!</li>
-        <li className="header-link">
-          Score: {props.score} | Highscore: {props.highscore}
-        </li>
+        <li className="header-link" />
+        <li className="header-link">Score: {props.score}</li>
       </ul>
     </div>
   );

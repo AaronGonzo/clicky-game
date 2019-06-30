@@ -11,35 +11,60 @@ import "./App.css";
 class App extends React.Component {
   state = {
     players,
-    score: 0,
-    highscore: 0
+    clicked: [],
+    score: 0
   };
 
-  endGame = () => {
-    if (this.state.score > this.state.highScore) {
-      this.setState({ highscore: this.state.score }, function() {
-        console.log(this.sate.highscore);
+  //Click a player card so the player is taken out of the players array
+  imageClicked = playerId => {
+    const hasClicked = this.state.clicked.indexOf(playerId) > -1;
+
+    // The cards will be rearranged using the sort method and if you click a player that has been selected then you will lose and it resets
+    if (hasClicked) {
+      this.setState({
+        players: this.state.players.sort(function(_x, y) {
+          return 0.5 - Math.random();
+        }),
+        clicked: [],
+        score: 0
       });
+      alert("You Lose!");
+    } else {
+      const score = this.state.score + 1;
+      this.setState({
+        players: this.state.players.sort(function(x, y) {
+          return 0.5 - Math.random();
+        }),
+        clicked: this.state.clicked.concat(playerId),
+        score
+      });
+
+      if (score === 12) {
+        alert("You Win!");
+        this.setState({
+          players: this.state.players.sort(function(x, y) {
+            return 0.5 - Math.random();
+          }),
+          clicked: [],
+          score: 0
+        });
+      }
     }
-    this.state.players.forEach(player => {
-      player.count = 0;
-    });
   };
 
   render() {
     return (
       <div>
-        <Header />
+        <Header score={this.state.score} />
         <Jumbotron />
         <div className="container">
           <Wrapper>
             {this.state.players.map(players => (
               <PlayerCard
+                key={players.id}
                 id={players.id}
-                name={players.name}
+                imageClick={() => this.imageClicked(players.id)}
                 image={players.image}
-                occupation={players.occupation}
-                location={players.location}
               />
             ))}
           </Wrapper>
